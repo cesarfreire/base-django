@@ -1,3 +1,4 @@
+"""URLs do app users."""
 from django.urls import path, include
 from . import views
 
