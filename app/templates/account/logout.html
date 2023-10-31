@@ -1,0 +1,40 @@
+{% extends 'login_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block head %}
+    <style>
+        body {
+            background: rgb(55,47,142);
+            background: linear-gradient(to right, #372f8e, #5b4ee2, #c36bc2); /* Degradê roxo */
+
+        }
+
+        .container {
+            margin-top: 100px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-body p-4 p-sm-5">
+                        <h5 class="card-title text-center mb-5 fw-light fs-5">Deseja realmente sair?</h5>
+                        <form id="sign-up" method="post">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <a class="btn btn-primary col-3 me-2" href="{{request.META.HTTP_REFERER|escape}}">Voltar</a>
+                            <button type="submit" class="btn btn-danger col-3">Sair</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
